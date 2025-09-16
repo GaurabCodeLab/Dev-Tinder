@@ -24,4 +24,4 @@
 - Add reduxdevtools to the chrome
 - Login and seeif your data is coming properly in the store
 - NavBar should update as soon as user logs in
-- Refactor our code to add constanf files + create a component folder
+- Refactor our code to add constant files + create a component folder

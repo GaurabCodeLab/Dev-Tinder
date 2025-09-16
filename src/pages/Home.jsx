@@ -1,5 +1,11 @@
+import Login from "../components/Login";
+
 const Home = () => {
-  return <h1>Home page</h1>;
+  return (
+    <div className="flex justify-center">
+      <Login />
+    </div>
+  );
 };
 
 export default Home;
