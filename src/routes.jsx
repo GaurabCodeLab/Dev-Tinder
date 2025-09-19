@@ -2,6 +2,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import CommonLayout from "./layout/CommonLayout";
+import Dashboard from "./pages/Dashboard";
 
 const routes = [
   {
@@ -19,6 +20,10 @@ const routes = [
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },

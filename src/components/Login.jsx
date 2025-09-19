@@ -1,8 +1,32 @@
 import { useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post(
+        BASE_URL + "/auth/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+      dispatch(addUser(response.data.data));
+      navigate("/dashboard");
+    } catch (error) {
+      console.log("Error in login: " + (error.message || error.data.message));
+    }
+  };
 
   return (
     <div className="card card-border bg-base-200 w-96 mt-6">
@@ -29,7 +53,9 @@ const Login = () => {
           />
         </fieldset>
         <div className="card-actions pt-4">
-          <button className="btn btn-primary w-full">Login</button>
+          <button className="btn btn-primary w-full" onClick={handleSubmit}>
+            Login
+          </button>
         </div>
       </div>
     </div>
