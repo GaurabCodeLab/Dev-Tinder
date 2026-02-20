@@ -15,14 +15,14 @@
 
 # Lacture - 2
 
-- Create a Login page
-- Install axios
-- CORS - install cors in backend => add middleware to with configuration: origin, credentials: true
-- Whenever you are making API call using axios pass { withCredentails: true }
-- install react-redux + @reduxjs/toolkit
-- ConfigureStore => Provider => createSlice => add reducer to the store
-- Add reduxdevtools to the chrome
-- Login and see if your data is coming properly in the store
+- Create a Login page - Done
+- Install axios - Done
+- CORS - install cors in backend => add middleware to with configuration: origin, credentials: true - Done
+- Whenever you are making API call using axios pass { withCredentails: true } - Done
+- install react-redux + @reduxjs/toolkit - Done
+- ConfigureStore => Provider => createSlice => add reducer to the store - Done
+- Add reduxdevtools to the chrome - Done
+- Login and see if your data is coming properly in the store - Done
 - NavBar should update as soon as user logs in
 - Refactor our code to add constant files + create a component folder
 
