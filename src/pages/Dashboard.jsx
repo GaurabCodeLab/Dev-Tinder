@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex justify-center mt-16">
-      <Card data={feedData[0]} />
+      {feedData && <Card data={feedData[0]} />}
     </div>
   );
 };

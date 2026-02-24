@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import DashboardLayout from "./layout/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
 
 const routes = [
   {
@@ -28,6 +29,10 @@ const routes = [
         path: "/dashboard",
         index: true,
         element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/profile",
+        element: <Profile />,
       },
     ],
   },
