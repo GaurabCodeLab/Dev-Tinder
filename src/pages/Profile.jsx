@@ -2,9 +2,16 @@ import Card from "../components/Card";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "../utils/constants";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux/slices/userSlice";
 
 const Profile = () => {
   const userDetails = useSelector((state) => state.userDetails.user);
+  const [showAlert, setShowAlert] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
@@ -13,12 +20,23 @@ const Profile = () => {
     gender: "",
     about: "",
   });
+  const dispatch = useDispatch();
   const {
     register,
     setValue,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  useEffect(() => {
+    let timer;
+    if (showAlert) {
+      timer = setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
+    }
+    return () => clearTimeout(timer);
+  }, [showAlert]);
 
   useEffect(() => {
     if (userDetails) {
@@ -39,21 +57,47 @@ const Profile = () => {
     }
   }, [userDetails]);
 
-  const onSubmit = (data) => {
-    console.log("data hai", data);
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+      const response = await axios.patch(API_BASE_URL + "/profile/edit", data, {
+        withCredentials: true,
+      });
+      setShowAlert(true);
+      setLoading(false);
+      dispatch(addUser(response.data.user));
+    } catch (error) {
+      setShowAlert(false);
+      setLoading(false);
+      const errorMessage =
+        error instanceof Error ? error.message : "something went wrong";
+      console.error(errorMessage);
+      Swal.fire({
+        icon: "error",
+        text: errorMessage,
+      });
+    }
   };
 
   return (
     <div className="flex justify-center gap-8 mt-5">
+      {showAlert && (
+        <div className="toast toast-top toast-center">
+          <div className="alert alert-success">
+            <span>Profile Saved Successfully</span>
+          </div>
+        </div>
+      )}
       <div className="card card-border bg-base-300 w-96">
         <div className="card-body">
-          <h2 className="card-title">Card Title</h2>
+          <h2 className="card-title">Edit Profile</h2>
           <fieldset className="fieldset">
             <legend className="fieldset-legend">First Name</legend>
             <input
               type="text"
               maxLength={30}
               className="input"
+              disabled={loading}
               placeholder="First Name"
               {...register("firstName", {
                 required: "First Name is required",
@@ -76,6 +120,7 @@ const Profile = () => {
               type="text"
               className="input"
               placeholder="Last Name"
+              disabled={loading}
               {...register("lastName", {
                 onChange: (e) => {
                   setUserData((pre) => ({ ...pre, lastName: e.target.value }));
@@ -89,6 +134,7 @@ const Profile = () => {
               type="url"
               className="input"
               placeholder="Photo URL"
+              disabled={loading}
               {...register("photoUrl", {
                 onChange: (e) => {
                   setUserData((pre) => ({ ...pre, photoUrl: e.target.value }));
@@ -103,6 +149,7 @@ const Profile = () => {
               className="input"
               placeholder="Age"
               maxLength={2}
+              disabled={loading}
               {...register("age", {
                 required: "Age is required",
                 onChange: (e) => {
@@ -126,6 +173,7 @@ const Profile = () => {
                   setUserData((pre) => ({ ...pre, gender: e.target.value }));
                 },
               })}
+              disabled={loading}
             >
               <option disabled={true} value="">
                 Select a Gender
@@ -142,6 +190,7 @@ const Profile = () => {
             <textarea
               className="textarea h-24"
               placeholder="About"
+              disabled={loading}
               {...register("about", {
                 onChange: (e) => {
                   setUserData((pre) => ({ ...pre, about: e.target.value }));
@@ -153,8 +202,9 @@ const Profile = () => {
             <button
               className="btn btn-primary"
               onClick={handleSubmit(onSubmit)}
+              disabled={loading}
             >
-              Save Profile
+              {loading ? "Saving..." : "Save Profile"}
             </button>
           </div>
         </div>

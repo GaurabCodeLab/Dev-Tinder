@@ -1,14 +1,15 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../redux/slices/userSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { API_BASE_URL } from "../utils/constants";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const userDetails = useSelector((state) => state.userDetails.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -35,7 +36,9 @@ const Login = () => {
     }
   };
 
-  return (
+  return userDetails ? (
+    <Navigate to="/dashboard" />
+  ) : (
     <div className="flex justify-center mt-10">
       <div className="card card-border bg-base-300 w-96">
         <div className="card-body">

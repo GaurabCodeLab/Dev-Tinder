@@ -4,6 +4,7 @@ import Registration from "./pages/Registration";
 import DashboardLayout from "./layout/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
+import AuthWrapper from "./components/AuthWrapper";
 
 const routes = [
   {
@@ -23,7 +24,11 @@ const routes = [
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <AuthWrapper>
+        <DashboardLayout />
+      </AuthWrapper>
+    ),
     children: [
       {
         path: "/dashboard",

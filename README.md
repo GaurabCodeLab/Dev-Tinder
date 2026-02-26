@@ -23,14 +23,14 @@
 - ConfigureStore => Provider => createSlice => add reducer to the store - Done
 - Add reduxdevtools to the chrome - Done
 - Login and see if your data is coming properly in the store - Done
-- NavBar should update as soon as user logs in
-- Refactor our code to add constant files + create a component folder
+- NavBar should update as soon as user logs in - Done
+- Refactor our code to add constant files + create a component folder - Done
 
 # Lacture - 3
 
-- You should not be able to access other routes without login
-- If token is not present, redirect user to login page
+- You should not be able to access other routes without login - Done
+- If token is not present, redirect user to login page - Done
 - Logout feature - Done
 - Get the feed and add the feed in the store - Done
 - Build the user card on feed - Done
-- Build update profile feature
+- Build update profile feature - Done

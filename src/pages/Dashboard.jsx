@@ -10,7 +10,9 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchFeed();
+    if (!feedData) {
+      fetchFeed();
+    }
   }, []);
 
   const fetchFeed = async () => {
