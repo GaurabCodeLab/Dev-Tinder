@@ -70,7 +70,10 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link to="/dashboard/connections">Connections</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/connection-request">Requests</Link>
                 </li>
                 <li>
                   <div onClick={handleLogout}>Logout</div>

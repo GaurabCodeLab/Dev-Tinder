@@ -34,3 +34,10 @@
 - Get the feed and add the feed in the store - Done
 - Build the user card on feed - Done
 - Build update profile feature - Done
+- Show toast message on save of profile
+
+# Lacture - 4
+
+- New-Page - See all my connections - Done
+- New-Page - See all my connection requests - Done
+- Feature - Accept/Reject Connection Request - Done

@@ -5,6 +5,8 @@ import DashboardLayout from "./layout/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import AuthWrapper from "./components/AuthWrapper";
+import Connections from "./pages/Connections";
+import ConnectionRequest from "./pages/ConnectionRequest";
 
 const routes = [
   {
@@ -38,6 +40,14 @@ const routes = [
       {
         path: "/dashboard/profile",
         element: <Profile />,
+      },
+      {
+        path: "/dashboard/connections",
+        element: <Connections />,
+      },
+      {
+        path: "/dashboard/connection-request",
+        element: <ConnectionRequest />,
       },
     ],
   },
