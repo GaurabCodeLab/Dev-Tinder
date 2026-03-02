@@ -41,3 +41,9 @@
 - New-Page - See all my connections - Done
 - New-Page - See all my connection requests - Done
 - Feature - Accept/Reject Connection Request - Done
+
+# Lacture - 5
+
+- Send/Ignore the user card from the feed
+- Signup New User
+- E2E Testing

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../redux/slices/userSlice";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { API_BASE_URL } from "../utils/constants";
 
@@ -109,6 +109,12 @@ const Login = () => {
               {loading ? "Signing in…" : " Login"}
             </button>
           </div>
+          <p className="text-center font-bold mt-2">
+            Not a User{" "}
+            <Link to="/registration" className="text-green-600 underline">
+              Register Now
+            </Link>
+          </p>
         </div>
       </div>
     </div>
