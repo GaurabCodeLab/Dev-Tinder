@@ -120,7 +120,9 @@ const ConnectionRequest = () => {
             </div>
           ))
         ) : (
-          <div className="text-center mt-10">No Connection Request Found</div>
+          <p className="text-center mt-6 text-2xl font-bold">
+            No Connection Request Found
+          </p>
         )}
       </div>
     </div>
