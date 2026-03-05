@@ -32,7 +32,10 @@ const Connections = () => {
 
   return (
     <div>
-      <h2 className="text-4xl font-bold text-center my-4">Connections</h2>
+      {connections && connections.length > 0 && (
+        <h2 className="text-4xl font-bold text-center my-4">Connections</h2>
+      )}
+
       <div className="flex flex-col gap-5">
         {connections && connections.length > 0 ? (
           connections.map((connection) => (
@@ -53,7 +56,9 @@ const Connections = () => {
             </div>
           ))
         ) : (
-          <div>No connections found</div>
+          <p className="text-center mt-6 text-2xl font-bold">
+            No connections found
+          </p>
         )}
       </div>
     </div>

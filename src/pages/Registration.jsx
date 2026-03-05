@@ -4,14 +4,21 @@ import axios from "axios";
 import { API_BASE_URL } from "../utils/constants";
 import Swal from "sweetalert2";
 import { useNavigate, Link } from "react-router-dom";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Registration = () => {
   const [loading, setLoading] = useState(false);
+  const [toggle, setToggle] = useState({
+    password: "hide",
+    confirmPassword: "hide",
+  });
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -27,6 +34,7 @@ const Registration = () => {
         },
       );
       setLoading(false);
+      reset();
       Swal.fire({
         icon: "success",
         text: response.data.message,
@@ -38,7 +46,7 @@ const Registration = () => {
     } catch (error) {
       setLoading(false);
       const errorMessage =
-        error instanceof Error ? error.message : "something went wrong";
+        error.response.data.message || "something went wrong";
       console.error(errorMessage);
       Swal.fire({
         icon: "error",
@@ -48,10 +56,10 @@ const Registration = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-center flex-col">
-        <h2 className="card-title">Registration</h2>
-        <fieldset className="fieldset">
+    <div className="flex justify-center px-10 md:px-0">
+      <div className="w-full md:w-1/2 flex flex-col items-center">
+        <h2 className="card-title text-2xl mt-5">Registration</h2>
+        <fieldset className="fieldset w-full md:w-1/2">
           <legend className="fieldset-legend">First Name</legend>
           <input
             type="text"
@@ -71,7 +79,7 @@ const Registration = () => {
             <p className="text-red-600">{errors.firstName.message}</p>
           )}
         </fieldset>
-        <fieldset className="fieldset">
+        <fieldset className="fieldset w-full md:w-1/2">
           <legend className="fieldset-legend">Last Name</legend>
           <input
             type="text"
@@ -82,7 +90,7 @@ const Registration = () => {
             {...register("lastName", {})}
           />
         </fieldset>
-        <fieldset className="fieldset">
+        <fieldset className="fieldset w-full md:w-1/2">
           <legend className="fieldset-legend">Email</legend>
           <input
             type="text"
@@ -101,10 +109,10 @@ const Registration = () => {
             <p className="text-red-600">{errors.email.message}</p>
           )}
         </fieldset>
-        <fieldset className="fieldset">
+        <fieldset className="fieldset w-full md:w-1/2 relative">
           <legend className="fieldset-legend">Password</legend>
           <input
-            type="password"
+            type={toggle.password === "hide" ? "password" : "text"}
             className="input"
             placeholder="Password"
             disabled={loading}
@@ -118,14 +126,25 @@ const Registration = () => {
               },
             })}
           />
+          {toggle.password === "hide" ? (
+            <FaRegEyeSlash
+              className="text-xl absolute right-3 cursor-pointer top-3"
+              onClick={() => setToggle((pre) => ({ ...pre, password: "show" }))}
+            />
+          ) : (
+            <FaRegEye
+              className="text-xl absolute right-3 cursor-pointer top-3"
+              onClick={() => setToggle((pre) => ({ ...pre, password: "hide" }))}
+            />
+          )}
           {errors.password && (
             <p className="text-red-600">{errors.password.message}</p>
           )}
         </fieldset>
-        <fieldset className="fieldset">
+        <fieldset className="fieldset w-full md:w-1/2 relative">
           <legend className="fieldset-legend">Confirm Password</legend>
           <input
-            type="password"
+            type={toggle.confirmPassword === "hide" ? "password" : "text"}
             className="input"
             placeholder="Confirm Password"
             disabled={loading}
@@ -136,11 +155,26 @@ const Registration = () => {
                 "password & confirm password must match",
             })}
           />
+          {toggle.confirmPassword === "hide" ? (
+            <FaRegEyeSlash
+              className="text-xl absolute right-3 cursor-pointer top-3"
+              onClick={() =>
+                setToggle((pre) => ({ ...pre, confirmPassword: "show" }))
+              }
+            />
+          ) : (
+            <FaRegEye
+              className="text-xl absolute right-3 cursor-pointer top-3"
+              onClick={() =>
+                setToggle((pre) => ({ ...pre, confirmPassword: "hide" }))
+              }
+            />
+          )}
           {errors.confirmPassword && (
             <p className="text-red-600">{errors.confirmPassword.message}</p>
           )}
         </fieldset>
-        <fieldset className="fieldset">
+        <fieldset className="fieldset w-full md:w-1/2">
           <legend className="fieldset-legend">Age</legend>
           <input
             type="text"
@@ -159,7 +193,7 @@ const Registration = () => {
           />
           {errors.age && <p className="text-red-600">{errors.age.message}</p>}
         </fieldset>
-        <fieldset className="fieldset">
+        <fieldset className="fieldset w-full md:w-1/2">
           <legend className="fieldset-legend">Gender</legend>
           <select
             defaultValue="Pick a browser"
@@ -177,7 +211,7 @@ const Registration = () => {
             <p className="text-red-600">{errors.gender.message}</p>
           )}
         </fieldset>
-        <div className="card-actions justify-center">
+        <div className="card-actions justify-center mt-3">
           <button
             className="btn btn-primary"
             onClick={handleSubmit(onSubmit)}
@@ -186,13 +220,13 @@ const Registration = () => {
             {loading ? "Registering..." : "Register"}
           </button>
         </div>
+        <p className="text-center font-bold my-2">
+          Already a User{" "}
+          <Link to="/" className="text-green-600 underline">
+            Login Now
+          </Link>
+        </p>
       </div>
-      <p className="text-center font-bold mt-2">
-        Already a User{" "}
-        <Link to="/" className="text-green-600 underline">
-          Login Now
-        </Link>
-      </p>
     </div>
   );
 };

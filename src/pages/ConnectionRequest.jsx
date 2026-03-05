@@ -70,10 +70,12 @@ const ConnectionRequest = () => {
 
   return (
     <div>
-      <h2 className="text-4xl font-bold text-center my-4">
-        Connection Requests
-      </h2>
       <div className="flex flex-col gap-5">
+        {requests && requests.length > 0 && (
+          <h2 className="text-4xl font-bold text-center my-4">
+            Connection Requests
+          </h2>
+        )}
         {showToast && (
           <div className="toast toast-top toast-center">
             <div className="alert alert-success">

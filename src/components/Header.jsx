@@ -33,7 +33,7 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar bg-base-300 shadow-sm">
+    <div className="navbar bg-base-300 shadow-sm sticky top-0 z-30">
       <div className="flex-1">
         <Link className="btn btn-ghost text-xl" to="/dashboard">
           DevTinder
@@ -74,6 +74,9 @@ const Header = () => {
                 </li>
                 <li>
                   <Link to="/dashboard/connection-request">Requests</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/change-password">Change Password</Link>
                 </li>
                 <li>
                   <div onClick={handleLogout}>Logout</div>

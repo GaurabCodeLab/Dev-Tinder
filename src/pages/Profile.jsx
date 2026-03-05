@@ -209,7 +209,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      {userDetails && <Card data={userData} />}
+      {userDetails && <Card data={userData} use="profile" />}
     </div>
   );
 };

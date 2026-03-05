@@ -5,10 +5,12 @@ import { addUser } from "../redux/slices/userSlice";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { API_BASE_URL } from "../utils/constants";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [toggle, setToggle] = useState("hide");
   const userDetails = useSelector((state) => state.userDetails.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ const Login = () => {
     } catch (error) {
       setLoading(false);
       const errorDetails =
-        error instanceof Error ? error.message : "something went wrong";
+        error.response.data.message || "something went wrong";
       setErrorMessage(errorDetails);
       console.error(errorDetails);
     }
@@ -55,22 +57,39 @@ const Login = () => {
                   value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
                   message: "provide correct email address",
                 },
+                onChange: () => {
+                  setErrorMessage("");
+                },
               })}
             />
           </fieldset>
           {errors.email && (
             <p className="text-red-600">{errors.email.message}</p>
           )}
-          <fieldset className="fieldset">
+          <fieldset className="fieldset relative">
             <legend className="fieldset-legend">Password</legend>
             <input
-              type="password"
+              type={toggle === "hide" ? "password" : "text"}
               className="input"
               placeholder="Password"
               {...register("password", {
                 required: "password is required",
+                onChange: () => {
+                  setErrorMessage("");
+                },
               })}
             />
+            {toggle === "hide" ? (
+              <FaRegEyeSlash
+                className="text-xl absolute right-5 cursor-pointer top-3"
+                onClick={() => setToggle("show")}
+              />
+            ) : (
+              <FaRegEye
+                className="text-xl absolute right-5 cursor-pointer top-3"
+                onClick={() => setToggle("hide")}
+              />
+            )}
           </fieldset>
           {errors.password && (
             <p className="text-red-600">{errors.password.message}</p>
@@ -96,7 +115,7 @@ const Login = () => {
                       cy="12"
                       r="10"
                       stroke="currentColor"
-                      stroke-width="4"
+                      strokeWidth="4"
                     ></circle>
                     <path
                       className="opacity-75"

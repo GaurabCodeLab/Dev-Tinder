@@ -4,11 +4,11 @@ import { Outlet } from "react-router-dom";
 
 const CommonLayout = () => {
   return (
-    <>
+    <div className="min-h-screen">
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
 

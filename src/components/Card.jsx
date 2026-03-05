@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useFetchFeed from "../hooks/useFetchFeed";
 import { useState, useEffect } from "react";
 
-const Card = ({ data }) => {
+const Card = ({ data, use }) => {
   const [loading, setLoading] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [status, setStatus] = useState("");
@@ -66,22 +66,24 @@ const Card = ({ data }) => {
         <h2 className="card-title text-xl">{firstName + " " + lastName}</h2>
         <h4>{age + " " + gender} </h4>
         <p>{about}</p>
-        <div className="card-actions justify-center mt-4 gap-3">
-          <button
-            className="btn btn-primary"
-            disabled={loading}
-            onClick={() => handleRequest("ignored", _id)}
-          >
-            Ignore
-          </button>
-          <button
-            className="btn btn-secondary"
-            disabled={loading}
-            onClick={() => handleRequest("interested", _id)}
-          >
-            Interested
-          </button>
-        </div>
+        {use !== "profile" && (
+          <div className="card-actions justify-center mt-4 gap-3">
+            <button
+              className="btn btn-primary"
+              disabled={loading}
+              onClick={() => handleRequest("ignored", _id)}
+            >
+              Ignore
+            </button>
+            <button
+              className="btn btn-secondary"
+              disabled={loading}
+              onClick={() => handleRequest("interested", _id)}
+            >
+              Interested
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ const App = () => {
         withCredentials: true,
       });
       dispatch(addUser(response.data.user));
-      navigate("/dashboard");
+      // navigate("/dashboard");
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : "something went wrong";
