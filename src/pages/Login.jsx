@@ -32,7 +32,7 @@ const Login = () => {
     } catch (error) {
       setLoading(false);
       const errorDetails =
-        error.response.data.message || "something went wrong";
+        error?.response?.data?.message || "something went wrong";
       setErrorMessage(errorDetails);
       console.error(errorDetails);
     }

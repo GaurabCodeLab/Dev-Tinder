@@ -70,7 +70,7 @@ const Profile = () => {
       setShowAlert(false);
       setLoading(false);
       const errorMessage =
-        error instanceof Error ? error.message : "something went wrong";
+        error?.response?.data?.message || "something went wrong";
       console.error(errorMessage);
       Swal.fire({
         icon: "error",
@@ -82,7 +82,7 @@ const Profile = () => {
   return (
     <div className="flex justify-center gap-8 mt-5">
       {showAlert && (
-        <div className="toast toast-top toast-center">
+        <div className="toast toast-top top-15 z-1000 toast-center">
           <div className="alert alert-success">
             <span>Profile Saved Successfully</span>
           </div>

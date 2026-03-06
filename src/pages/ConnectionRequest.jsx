@@ -21,6 +21,7 @@ const ConnectionRequest = () => {
     if (showToast) {
       timer = setTimeout(() => {
         setShowToast(false);
+        setLoading(false);
       }, 2000);
     }
     return () => clearTimeout(timer);
@@ -35,7 +36,7 @@ const ConnectionRequest = () => {
       dispatch(addRequests(response.data.data));
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "something went wrong";
+        error?.response?.data?.message || "something went wrong";
       console.error(errorMessage);
       Swal.fire({
         icon: "error",
@@ -47,19 +48,18 @@ const ConnectionRequest = () => {
   const handleReview = async (status, id) => {
     try {
       setLoading(true);
-      const response = await axios.post(
+      await axios.post(
         API_BASE_URL + `/request/review/${status}/${id}`,
         {},
         { withCredentials: true },
       );
       setStatus(status);
-      setLoading(false);
       setShowToast(true);
       fetchConnectionRequest();
     } catch (error) {
       setLoading(false);
       const errorMessage =
-        error instanceof Error ? error.message : "something went wrong";
+        error?.response?.data?.message || "something went wrong";
       console.error(errorMessage);
       Swal.fire({
         icon: "error",
@@ -77,7 +77,7 @@ const ConnectionRequest = () => {
           </h2>
         )}
         {showToast && (
-          <div className="toast toast-top toast-center">
+          <div className="toast toast-top top-15 z-1000 toast-center">
             <div className="alert alert-success">
               <span>Connection {status} successfully</span>
             </div>

@@ -15,6 +15,7 @@ const Card = ({ data, use }) => {
     if (showToast) {
       timer = setTimeout(() => {
         setShowToast(false);
+        setLoading(false);
       }, 2000);
     }
     return () => clearTimeout(timer);
@@ -31,13 +32,12 @@ const Card = ({ data, use }) => {
         {},
         { withCredentials: true },
       );
-      setLoading(false);
       setShowToast(true);
       fetchFeed();
     } catch (error) {
       setLoading(false);
       const errorMessage =
-        error instanceof Error ? error.message : "something went wrong";
+        error?.response?.data?.message || "something went wrong";
       console.error(errorMessage);
       Swal.fire({
         icon: "error",

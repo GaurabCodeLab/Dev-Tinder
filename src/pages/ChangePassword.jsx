@@ -35,6 +35,11 @@ const ChangePassword = () => {
         { withCredentials: true },
       );
       setLoading(false);
+      reset({
+        oldPassword: "",
+        password: "",
+        confirmPassword: "",
+      });
       Swal.fire({
         icon: "success",
         text: response.data.message,
@@ -46,7 +51,7 @@ const ChangePassword = () => {
     } catch (error) {
       setLoading(false);
       const errorDetails =
-        error.response.data.message || "something went wrong";
+        error?.response?.data?.message || "something went wrong";
       console.error(errorDetails);
       setErrorMessage(errorDetails);
     }

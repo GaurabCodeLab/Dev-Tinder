@@ -21,7 +21,7 @@ const Connections = () => {
       dispatch(addConnections(response.data.data));
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "something went wrong";
+        error?.response?.data?.message || "something went wrong";
       console.error(errorMessage);
       Swal.fire({
         icon: "error",

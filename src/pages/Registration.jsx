@@ -34,7 +34,15 @@ const Registration = () => {
         },
       );
       setLoading(false);
-      reset();
+      reset({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        age: "",
+        gender: "",
+      });
       Swal.fire({
         icon: "success",
         text: response.data.message,
@@ -46,7 +54,7 @@ const Registration = () => {
     } catch (error) {
       setLoading(false);
       const errorMessage =
-        error.response.data.message || "something went wrong";
+        error?.response?.data?.message || "something went wrong";
       console.error(errorMessage);
       Swal.fire({
         icon: "error",
