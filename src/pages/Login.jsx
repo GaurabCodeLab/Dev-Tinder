@@ -41,7 +41,7 @@ const Login = () => {
   return userDetails ? (
     <Navigate to="/dashboard" />
   ) : (
-    <div className="flex justify-center mt-10">
+    <div className="flex justify-center mt-10 px-4 md:px-0">
       <div className="card card-border bg-base-300 w-96">
         <div className="card-body">
           <h2 className="card-title">Login</h2>

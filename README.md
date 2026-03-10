@@ -47,3 +47,16 @@
 - Send/Ignore the user card from the feed
 - Signup New User
 - E2E Testing
+
+# Deployment:-
+
+- Signup on AWS
+- Launch EC2 instance
+- chmod 400 <secret>.pem
+- ssh -i "DevTinder-Secret.pem" ubuntu@ec2-3-237-14-163.compute-1.amazonaws.com
+- Install node version as per your local computer version
+- Git clone
+- Frontend
+  -npm install - dependencies install - npm run build - sudo apt update - sudo apt install nginx - sudo systemctl install nginx - sudo systemctl enable nginx - Copy code from dist(build files) to /var/www/html/ - sudo scp -r dist/\* /var/www/html/ - Enable port :80 of your instance
+
+- Backend:- - allowed ec2 instance public IP on mongo server - npm install pm2 -g - pm2 start npm --name "devtinder-backend" -- start - pm2 log - pm2 list, pm2 flush <name>, pm2 stop <name>, pm2 delete <name> - config nginx - /etc/nginx/sites-available/default - do configuration and restart nginx (command: sudo systemctl restart nginx)

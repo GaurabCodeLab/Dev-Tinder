@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 const CommonLayout = () => {
   return (
-    <div className="min-h-screen">
+    <div className="max-h-screen">
       <Header />
       <Outlet />
       <Footer />
