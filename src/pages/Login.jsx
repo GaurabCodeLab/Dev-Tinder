@@ -41,10 +41,10 @@ const Login = () => {
   return userDetails ? (
     <Navigate to="/dashboard" />
   ) : (
-    <div className="flex justify-center mt-10 px-4 md:px-0">
-      <div className="card card-border bg-base-300 w-96">
+    <div className="flex-1 md:mx-auto mt-10 px-4 md:px-0">
+      <div className="card card-border bg-base-300 md:w-96">
         <div className="card-body">
-          <h2 className="card-title">Login</h2>
+          <h2 className="font-bold text-center text-2xl">Login</h2>
           <fieldset className="fieldset">
             <legend className="fieldset-legend">Email Address</legend>
             <input
@@ -97,7 +97,7 @@ const Login = () => {
           {errorMessage && <p className="text-red-600">{errorMessage}</p>}
           <div className="card-actions justify-center mt-4">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary w-full"
               onClick={handleSubmit(onSubmit)}
               disabled={loading}
             >

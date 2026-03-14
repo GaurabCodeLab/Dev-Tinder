@@ -47,7 +47,7 @@ const Card = ({ data, use }) => {
   };
 
   return (
-    <div className="card bg-base-300 w-96 shadow-sm">
+    <div className="card bg-base-300 md:w-96 w-80 shadow-sm h-150">
       {showToast && (
         <div className="toast toast-top toast-center mt-12">
           <div className="alert alert-success">
@@ -60,7 +60,7 @@ const Card = ({ data, use }) => {
         </div>
       )}
       <figure>
-        <img src={photoUrl} alt="user photo" />
+        <img src={photoUrl} alt="user photo" className="w-full h-auto" />
       </figure>
       <div className="card-body">
         <h2 className="card-title text-xl">{firstName + " " + lastName}</h2>

@@ -10,6 +10,7 @@ const ConnectionRequest = () => {
   const [status, setStatus] = useState("");
   const [showToast, setShowToast] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [connectionLoading, setConnectionLoading] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,12 +30,15 @@ const ConnectionRequest = () => {
 
   const fetchConnectionRequest = async () => {
     try {
+      setConnectionLoading(true);
       const response = await axios.get(
         API_BASE_URL + "/user/requests/received",
         { withCredentials: true },
       );
+      setConnectionLoading(false);
       dispatch(addRequests(response.data.data));
     } catch (error) {
+      setConnectionLoading(false);
       const errorMessage =
         error?.response?.data?.message || "something went wrong";
       console.error(errorMessage);
@@ -69,31 +73,40 @@ const ConnectionRequest = () => {
   };
 
   return (
-    <div>
-      <div className="flex flex-col gap-5">
-        {requests && requests.length > 0 && (
-          <h2 className="text-4xl font-bold text-center my-4">
-            Connection Requests
-          </h2>
-        )}
-        {showToast && (
-          <div className="toast toast-top top-15 z-1000 toast-center">
-            <div className="alert alert-success">
-              <span>Connection {status} successfully</span>
-            </div>
+    <div className="flex-1">
+      {connectionLoading && (
+        <div className="fixed inset-0 bg-white/40 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-blue-500 border-t-transparent" />
+        </div>
+      )}
+      {requests && requests.length > 0 && (
+        <h2 className="text-3xl font-bold text-center mb-4">
+          Connection Requests
+        </h2>
+      )}
+      {showToast && (
+        <div className="toast toast-top top-15 z-1000 toast-center">
+          <div className="alert alert-success">
+            <span>Connection {status} successfully</span>
           </div>
-        )}
+        </div>
+      )}
+      <div className="flex flex-col gap-5 px-4 md:px-0">
         {requests && requests.length > 0 ? (
           requests.map((request) => (
             <div
-              className="card card-side bg-base-300 shadow-sm h-35 w-1/2 mx-auto"
+              className="card flex-wrap md:flex-nowrap card-side bg-base-300 shadow-sm md:h-35 md:w-1/2 mx-auto"
               key={request._id}
             >
-              <figure>
-                <img src={request.fromUserId.photoUrl} alt="Movie" />
+              <figure className="w-full md:w-auto">
+                <img
+                  src={request.fromUserId.photoUrl}
+                  alt="Movie"
+                  className="w-full h-auto object-contain"
+                />
               </figure>
               <div className="card-body">
-                <h2 className="card-title text-2xl">
+                <h2 className="card-title text-2xl text-nowrap self-center md:self-auto">
                   {request.fromUserId.firstName +
                     " " +
                     request.fromUserId.lastName}
@@ -103,16 +116,16 @@ const ConnectionRequest = () => {
                 </p>
                 <p>{request.fromUserId.about}</p>
               </div>
-              <div className="flex items-center pe-6 gap-4">
+              <div className="flex items-center w-full md:w-auto pb-4 md:pb-0 justify-center md:pe-6 gap-4">
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-primary w-[40%] md:w-auto"
                   disabled={loading}
                   onClick={() => handleReview("accepted", request._id)}
                 >
                   Accept
                 </button>
                 <button
-                  className="btn btn-secondary"
+                  className="btn btn-secondary w-[40%] md:w-auto"
                   disabled={loading}
                   onClick={() => handleReview("rejected", request._id)}
                 >

@@ -80,7 +80,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex justify-center gap-8 mt-5">
+    <div className="flex justify-center gap-8 flex-col md:flex-row px-4 md:px-0">
       {showAlert && (
         <div className="toast toast-top top-15 z-1000 toast-center">
           <div className="alert alert-success">
@@ -88,9 +88,9 @@ const Profile = () => {
           </div>
         </div>
       )}
-      <div className="card card-border bg-base-300 w-96">
+      <div className="card card-border bg-base-300 md:w-96">
         <div className="card-body">
-          <h2 className="card-title">Edit Profile</h2>
+          <h2 className="font-bold text-center text-2xl">Edit Profile</h2>
           <fieldset className="fieldset">
             <legend className="fieldset-legend">First Name</legend>
             <input
@@ -188,7 +188,7 @@ const Profile = () => {
           <fieldset className="fieldset">
             <legend className="fieldset-legend">About</legend>
             <textarea
-              className="textarea h-24"
+              className="textarea h-24 resize-none"
               placeholder="About"
               disabled={loading}
               {...register("about", {

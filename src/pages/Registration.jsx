@@ -64,8 +64,8 @@ const Registration = () => {
   };
 
   return (
-    <div className="flex justify-center px-5 md:px-0 mt-10 overflow-auto">
-      <div className="bg-base-300 md:w-[70%] px-6 md:px-0 w-full rounded-xl">
+    <div className="px-5 md:px-0 my-10">
+      <div className="bg-base-300 md:w-[70%] px-6 py-5 md:px-0 w-full mx-auto rounded-md">
         <h2 className="font-bold text-center text-2xl mt-5">Registration</h2>
         <div className="grid md:grid-cols-2 gap-x-16 md:px-20 md:py-5">
           <fieldset className="fieldset">
@@ -118,7 +118,7 @@ const Registration = () => {
               <p className="text-red-600">{errors.email.message}</p>
             )}
           </fieldset>
-          <fieldset className="fieldset">
+          <fieldset className="fieldset relative">
             <legend className="fieldset-legend">Password</legend>
             <input
               type={toggle.password === "hide" ? "password" : "text"}
@@ -137,14 +137,14 @@ const Registration = () => {
             />
             {toggle.password === "hide" ? (
               <FaRegEyeSlash
-                className="text-xl absolute right-3 cursor-pointer top-3"
+                className="text-xl absolute right-5 cursor-pointer top-3"
                 onClick={() =>
                   setToggle((pre) => ({ ...pre, password: "show" }))
                 }
               />
             ) : (
               <FaRegEye
-                className="text-xl absolute right-3 cursor-pointer top-3"
+                className="text-xl absolute right-5 cursor-pointer top-3"
                 onClick={() =>
                   setToggle((pre) => ({ ...pre, password: "hide" }))
                 }
@@ -154,7 +154,7 @@ const Registration = () => {
               <p className="text-red-600">{errors.password.message}</p>
             )}
           </fieldset>
-          <fieldset className="fieldset">
+          <fieldset className="fieldset relative">
             <legend className="fieldset-legend">Confirm Password</legend>
             <input
               type={toggle.confirmPassword === "hide" ? "password" : "text"}
@@ -170,14 +170,14 @@ const Registration = () => {
             />
             {toggle.confirmPassword === "hide" ? (
               <FaRegEyeSlash
-                className="text-xl absolute right-3 cursor-pointer top-3"
+                className="text-xl absolute right-5 cursor-pointer top-3"
                 onClick={() =>
                   setToggle((pre) => ({ ...pre, confirmPassword: "show" }))
                 }
               />
             ) : (
               <FaRegEye
-                className="text-xl absolute right-3 cursor-pointer top-3"
+                className="text-xl absolute right-5 cursor-pointer top-3"
                 onClick={() =>
                   setToggle((pre) => ({ ...pre, confirmPassword: "hide" }))
                 }
@@ -230,6 +230,30 @@ const Registration = () => {
               onClick={handleSubmit(onSubmit)}
               disabled={loading}
             >
+              {loading && (
+                <span id="spinner" className="inset-0">
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                  </svg>
+                </span>
+              )}
               {loading ? "Registering..." : "Register"}
             </button>
           </div>

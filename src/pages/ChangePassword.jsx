@@ -58,7 +58,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="flex justify-center mt-10">
+    <div className="flex justify-center flex-1 px-4 md:px-0">
       <div className="card card-border bg-base-300 w-96">
         <div className="card-body">
           <h2 className="card-title justify-center">Change Password</h2>
@@ -171,9 +171,9 @@ const ChangePassword = () => {
             )}
           </fieldset>
           {errorMessage && <p className="text-red-600">{errorMessage}</p>}
-          <div className="card-actions justify-center">
+          <div className="card-actions mt-5">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary w-full"
               disabled={loading}
               onClick={handleSubmit(onSubmit)}
             >

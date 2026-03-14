@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <div className="navbar bg-base-300 shadow-sm sticky top-0 z-30">
-      <div className="flex-1">
+      <div className={userDetails && "flex-1"}>
         <Link className="btn btn-ghost text-xl" to="/dashboard">
           DevTinder
         </Link>

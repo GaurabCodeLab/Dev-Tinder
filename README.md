@@ -56,7 +56,32 @@
 - ssh -i "DevTinder-Secret.pem" ubuntu@ec2-3-237-14-163.compute-1.amazonaws.com
 - Install node version as per your local computer version
 - Git clone
-- Frontend
-  -npm install - dependencies install - npm run build - sudo apt update - sudo apt install nginx - sudo systemctl install nginx - sudo systemctl enable nginx - Copy code from dist(build files) to /var/www/html/ - sudo scp -r dist/\* /var/www/html/ - Enable port :80 of your instance
+- Frontend Deployment
+- npm install - dependencies install
+- npm run build
+- sudo apt update
+- sudo apt install nginx
+- sudo systemctl start nginx
+- sudo systemctl enable nginx
+- Copy code from dist(build files) to /var/www/html/
+- sudo scp -r dist/\* /var/www/html/
+- Enable port :80 of your instance
 
-- Backend:- - allowed ec2 instance public IP on mongo server - npm install pm2 -g - pm2 start npm --name "devtinder-backend" -- start - pm2 log - pm2 list, pm2 flush <name>, pm2 stop <name>, pm2 delete <name> - config nginx - /etc/nginx/sites-available/default - do configuration and restart nginx (command: sudo systemctl restart nginx)
+- Backend:-
+- allowed ec2 instance public IP on mongo server
+- npm install pm2 -g
+- pm2 start npm --name "devtinder-backend" -- start
+- pm2 logs
+- pm2 list, pm2 flush <name>, pm2 stop <name>, pm2 delete <name>
+- config nginx - /etc/nginx/sites-available/default
+- do configuration and restart nginx (command: sudo systemctl restart nginx)
+- Modify the BASEURL in frontend project to "/api"
+
+# Adding a custom domain name:-
+
+- purchase domain name from godaddy
+- signup on cloudflare & add a new domain name
+- change the nameservers on godaddy and point it to cloudflare
+- wait for sometime till your nameserver are updated ~ 15 minutes
+- DNS record: A record devtinder.io 3.237.14.163
+- Enable SSL for websites
