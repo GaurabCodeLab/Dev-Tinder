@@ -50,22 +50,22 @@
 
 # Deployment:-
 
-- Signup on AWS
-- Launch EC2 instance
-- chmod 400 <secret>.pem
-- ssh -i "DevTinder-Secret.pem" ubuntu@ec2-3-237-14-163.compute-1.amazonaws.com
-- Install node version as per your local computer version
-- Git clone
-- Frontend Deployment
-- npm install - dependencies install
-- npm run build
-- sudo apt update
-- sudo apt install nginx
-- sudo systemctl start nginx
-- sudo systemctl enable nginx
-- Copy code from dist(build files) to /var/www/html/
-- sudo scp -r dist/\* /var/www/html/
-- Enable port :80 of your instance
+- Signup on AWS - Done
+- Launch EC2 instance - Done
+- connect instance using "SSH client", first run "chmod 400 <secret>.pem" - Done
+- ssh -i "DevTinder-Secret.pem" ubuntu@ec2-3-237-14-163.compute-1.amazonaws.com - Done
+- Install node version as per your local computer version - Done
+- Git clone - Done
+- Frontend Deployment - Done
+- npm install - dependencies install - Done
+- npm run build - Done
+- sudo apt update - Done
+- sudo apt install nginx - Done
+- sudo systemctl start nginx - Done
+- sudo systemctl enable nginx - Done
+- Copy code from dist(build files) to /var/www/html/ - Done
+- sudo scp -r dist/\* /var/www/html/ - Done
+- Enable port :80 of your instance - Done
 
 - Backend:-
 - allowed ec2 instance public IP on mongo server
