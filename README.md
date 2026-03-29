@@ -68,14 +68,30 @@
 - Enable port :80 of your instance - Done
 
 - Backend:-
-- allowed ec2 instance public IP on mongo server
-- npm install pm2 -g
-- pm2 start npm --name "devtinder-backend" -- start
-- pm2 logs
-- pm2 list, pm2 flush <name>, pm2 stop <name>, pm2 delete <name>
-- config nginx - /etc/nginx/sites-available/default
-- do configuration and restart nginx (command: sudo systemctl restart nginx)
+- allowed ec2 instance public IP on mongo server - Done
+- clone the backend code - Done
+- npm install - Done
+- Enable port 8080 of your instance - Done
+- npm install pm2 -g - Done
+- pm2 start npm --name "devtinder-backend" -- start - Done
+- pm2 logs - to check logs - Done
+- pm2 list, pm2 flush <name>, pm2 stop <name>, pm2 delete <name> - Done
+- config nginx - /etc/nginx/sites-available/default - Done
+- do configuration and restart nginx (command: sudo systemctl restart nginx) - Done
 - Modify the BASEURL in frontend project to "/api"
+
+# nginx configuration:-
+
+    server_name 43.204.96.49;
+
+    location /api/ {
+        proxy_pass http://localhost:7777/;  # Pass the request to the Node.js app
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
 
 # Adding a custom domain name:-
 
