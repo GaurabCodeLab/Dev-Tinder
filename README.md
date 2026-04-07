@@ -78,7 +78,7 @@
 - pm2 list, pm2 flush <name>, pm2 stop <name>, pm2 delete <name> - Done
 - config nginx - /etc/nginx/sites-available/default - Done
 - do configuration and restart nginx (command: sudo systemctl restart nginx) - Done
-- Modify the BASEURL in frontend project to "/api"
+- Modify the BASEURL in frontend project to "/api" - Done
 
 # nginx configuration:-
 
@@ -104,15 +104,29 @@
 
 # Sending email via SES:-
 
-- Create a IAM user
-- Give access to AmazonSESFullAccess
-- Amazon SES: Create an Identity
-- Verify your domain name
-- Verify your email address
+- Create a IAM user - Done
+- Give access to AmazonSESFullAccess - Done
+- Create access key for the IAM user - Done
+- Amazon SES: Create an Identity - Done
+- Verify your domain name - Done
+- Verify your email address - Done
 - Install AWS SDK - v3
-- Setup SecClient
-- Access credentials should be created in IAM under SecurityCredentails TAB
-- Add the credentials to the env file
+- Setup SesClient
+- Access credentials should be created in IAM under SecurityCredentails TAB - Done
+- Add the credentials to the env file - Done
 - Write code for SESClient
 - Write code for sending email address
 - Make the email dynamic by passing more params to the run function
+
+# Scheduling cron-job in NodeJs
+
+- Installing node-cron
+- Learning about cron expression syntax - crontab.guru
+- Schedule a job
+- date-fns npm library for date-time handling
+- Find all the unique email who have got connection request in previous day
+- Send email
+- Explore queue mechanism to send bulk emails
+- Amazon SES bulk emails
+- Make sendEmail function dynamic
+- bee-queue and bull npm packages for handling queue mechanism
