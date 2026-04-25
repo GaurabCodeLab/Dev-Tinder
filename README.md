@@ -110,23 +110,40 @@
 - Amazon SES: Create an Identity - Done
 - Verify your domain name - Done
 - Verify your email address - Done
-- Install AWS SDK - v3
-- Setup SesClient
+- Install AWS SDK - v3 - Done
+- Setup SesClient - Done
 - Access credentials should be created in IAM under SecurityCredentails TAB - Done
 - Add the credentials to the env file - Done
-- Write code for SESClient
-- Write code for sending email address
-- Make the email dynamic by passing more params to the run function
+- Write code for SESClient - Done
+- Write code for sending email address - Done
+- Make the email dynamic by passing more params to the run function - Done
 
 # Scheduling cron-job in NodeJs
 
-- Installing node-cron
-- Learning about cron expression syntax - crontab.guru
-- Schedule a job
-- date-fns npm library for date-time handling
-- Find all the unique email who have got connection request in previous day
-- Send email
+- Installing node-cron - Done
+- Learning about cron expression syntax - crontab.guru - Done
+- Schedule a job - Done
+- date-fns npm library for date-time handling - Done
+- Find all the unique email who have got connection request in previous day - Done
+- Send email - Done
 - Explore queue mechanism to send bulk emails
 - Amazon SES bulk emails
 - Make sendEmail function dynamic
 - bee-queue and bull npm packages for handling queue mechanism
+
+# Razorpay Payment Gateway Inegration
+
+- Sign up on Razorpay & complete KYC - Done
+- Cerated a UI for premium page - Done
+- Creating an API for create order in backend - Done
+- added my key and secret in env file - Done
+- Intialized Razorpay in utils - Done
+- creating order on Razorpay - Done
+- create Schema and model - Done
+- saved the order in payments collection - Done
+- make the API dynamic
+- Setup RRazorpay webhook on your live APi
+- Ref - https://github.com/razorpay/razorpay-node/tree/master/documents
+- Ref - https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/
+- Ref - https://razorpay.com/docs/webhooks/validate-test/
+- Ref - https://razorpay.com/docs/webhooks/payloads/payments/
