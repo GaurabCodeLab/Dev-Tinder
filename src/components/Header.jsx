@@ -76,6 +76,9 @@ const Header = () => {
                   <Link to="/dashboard/connection-request">Requests</Link>
                 </li>
                 <li>
+                  <Link to="/dashboard/premium">Premium</Link>
+                </li>
+                <li>
                   <Link to="/dashboard/change-password">Change Password</Link>
                 </li>
                 <li>

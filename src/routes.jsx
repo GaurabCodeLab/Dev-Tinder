@@ -8,6 +8,7 @@ import AuthWrapper from "./components/AuthWrapper";
 import Connections from "./pages/Connections";
 import ConnectionRequest from "./pages/ConnectionRequest";
 import ChangePassword from "./pages/ChangePassword";
+import Premium from "./pages/Premium";
 
 const routes = [
   {
@@ -49,6 +50,10 @@ const routes = [
       {
         path: "/dashboard/connection-request",
         element: <ConnectionRequest />,
+      },
+      {
+        path: "/dashboard/premium",
+        element: <Premium />,
       },
       {
         path: "/dashboard/change-password",
