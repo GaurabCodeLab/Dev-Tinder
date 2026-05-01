@@ -46,7 +46,9 @@ const Premium = () => {
       };
       const rzp = new window.Razorpay(options);
       rzp.open();
-    } catch (error) {}
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return isPremium ? (
