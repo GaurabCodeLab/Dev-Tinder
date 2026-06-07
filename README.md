@@ -110,13 +110,13 @@
 - Amazon SES: Create an Identity - Done
 - Verify your domain name - Done
 - Verify your email address - Done
-- Install AWS SDK - v3 - Done
-- Setup SesClient - Done
-- Access credentials should be created in IAM under SecurityCredentails TAB - Done
-- Add the credentials to the env file - Done
-- Write code for SESClient - Done
-- Write code for sending email address - Done
-- Make the email dynamic by passing more params to the run function - Done
+- Install AWS SDK - v3 -
+- Setup SesClient -
+- Access credentials should be created in IAM under SecurityCredentails TAB -
+- Add the credentials to the env file -
+- Write code for SESClient -
+- Write code for sending email address -
+- Make the email dynamic by passing more params to the run function -
 
 # Scheduling cron-job in NodeJs
 
@@ -135,12 +135,12 @@
 
 - Sign up on Razorpay & complete KYC - Done
 - Cerated a UI for premium page - Done
-- Creating an API for create order in backend - Done
-- added my key and secret in env file - Done
-- Intialized Razorpay in utils - Done
-- creating order on Razorpay - Done
-- create Schema and model - Done
-- saved the order in payments collection - Done
+- Creating an API for create order in backend -
+- added my key and secret in env file -
+- Intialized Razorpay in utils -
+- creating order on Razorpay -
+- create Schema and model -
+- saved the order in payments collection -
 - make the API dynamic
 - Setup RRazorpay webhook on your live APi
 - Ref - https://github.com/razorpay/razorpay-node/tree/master/documents
